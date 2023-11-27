@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -11,24 +11,14 @@ module.exports = {
         black: "#000",
         whitesmoke: "#f1f1f1",
         white: "#fff",
-        peru: "#d87d4a",
+        amaranth: "#ce4257",
+        priceText:"#333",
+        prodText:"#505050",
+        borderRed:"#ff99ac"
       },
       spacing: {},
       fontFamily: {
         sans: ['var(--font-manrope)'],
-      },
-      borderRadius: {
-        "3xs": "10px",
-      },
-    },
-    fontSize: {
-      base: "1rem",
-      "9xl": "1.75rem",
-      inherit: "inherit",
-    },
-  },
-  corePlugins: {
-    preflight: false,
-  },
-  plugins: [require("daisyui")]
+      }
+    }}
 };
