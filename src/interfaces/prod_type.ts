@@ -3,4 +3,6 @@ export interface ProductType {
     name: string;
     price: number;
     imageUrl: string;
+    availability:string;
+    stock:number;
   }

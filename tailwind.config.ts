@@ -14,7 +14,10 @@ module.exports = {
         amaranth: "#ce4257",
         priceText:"#333",
         prodText:"#505050",
-        borderRed:"#ff99ac"
+        borderRed:"#f7cad0",
+        pastelgreen:"#60d394",
+        pastelorange:"#D87D4A",
+        lightgray:"#6c757d"
       },
       spacing: {},
       fontFamily: {
