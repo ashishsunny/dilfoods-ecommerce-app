@@ -1,24 +1,28 @@
 'use client'
-import React from 'react'
+import React, { useContext } from 'react'
+import Link from 'next/link'
 import { textColorHandler } from '@/handlers/textColor'
 import data  from "@/data/data"
 import { ProductType } from '@/interfaces/prod_type'
+import { CartContext } from '@/contexts/cartContext'
 
 interface ProductComponentProps {
   data: ProductType[];
 }
 
 const ProductDetails = ({ params }: { params: { productId: string } }) => {
-  const idVal = parseInt(params.productId)-1;
+
+const idVal = parseInt(params.productId)-1;
+const { addToCart } = useContext(CartContext );
+
   return (
-    <div className="pb-[5rem]">
+    <div className="pb-[5rem] z-0">
       <div className="px-[1.5rem] flex flex-col justify-center">
         <div className="py-[1rem]">
-          <p className="font-medium text-black text-[.9rem] opacity-50">
+        <Link href="/"><p className="'cursor-pointer' font-medium text-black text-[.9rem] opacity-50">
             Go Back
-          </p>
+          </p></Link>
         </div>
-        <div>Details about ptod{params.productId}</div>
         <div className="flex justify-center items-center bg-whitesmoke w-[20rem] h-[20rem]">
           <img
             className="w-[16.5rem] h-[15rem]"
@@ -58,7 +62,7 @@ const ProductDetails = ({ params }: { params: { productId: string } }) => {
             <div className="text-black font-[700]">1</div>
             <div className="text-black opacity-[.25]">+</div>
           </div>
-          <button className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[10rem] h-[3rem]">
+          <button onClick={() => addToCart(data[idVal].id)} className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[10rem] h-[3rem]">
             Add To Cart
           </button>
         </div>
