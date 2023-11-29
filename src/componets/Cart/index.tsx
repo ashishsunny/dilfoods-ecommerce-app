@@ -2,13 +2,14 @@
 import React, { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
 import data from '@/data/data'
+import Link from 'next/link'
 interface CartProps {
   hide: boolean
 }
 
+
 const Cart: React.FC<CartProps> = ({ hide }) => {
-  
-  const { cartItems, addToCart, removeFromCart } = useContext(CartContext );
+  const { cartItems, addToCart, removeFromCart, setCartStatus } = useContext(CartContext );
 
   return (
     <div
@@ -50,14 +51,16 @@ const Cart: React.FC<CartProps> = ({ hide }) => {
                     <button onClick={()=>addToCart(item.id)} className="text-black opacity-[.25]">+</button>
                   </div>
                   </div>
-        
                   </li>
                   )
                 }
               })
             }
         </ul>
-
+        <div className='flex justify-between mb-[1.5rem]'><p className='opacity-[0.5] text-[.93rem] uppercase'>Total</p><p className='text-[1.123rem] font-[700]'>5,396 G</p></div>
+        <div onClick={()=>(setCartStatus(e=>!e))} className='flex justify-center'><Link href='/checkout' className=" flex justify-center items-center uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[17rem] h-[3rem]">
+            Checkout
+        </Link></div>
       </div>
     </div>
   )
