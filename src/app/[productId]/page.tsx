@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Link from 'next/link'
 import { textColorHandler } from '@/handlers/textColor'
 import data  from "@/data/data"
@@ -13,7 +13,12 @@ interface ProductComponentProps {
 const ProductDetails = ({ params }: { params: { productId: string } }) => {
 
 const idVal = parseInt(params.productId)-1;
-const { addToCart } = useContext(CartContext );
+const { CartHandler } = useContext(CartContext);
+const [val, setVal] = useState(0)
+
+const handleV = (x : string) =>{
+   x ==="-" ? setVal((i)=>(i>1 ? (i - 1) : 0 )) : setVal((i)=>(i + 1))
+}
 
   return (
     <div className="pb-[5rem] z-0">
@@ -58,11 +63,11 @@ const { addToCart } = useContext(CartContext );
 
         <div className="flex">
           <div className="bg-whitesmoke flex justify-between items-center w-[7.5rem] h-[3rem] px-[.9rem] mr-[1rem]">
-            <div className="text-black opacity-[.25]">-</div>
-            <div className="text-black font-[700]">1</div>
-            <div className="text-black opacity-[.25]">+</div>
+            <button onClick={() => handleV("-")} className="text-black opacity-[.25]">-</button>
+            <div className="text-black font-[700]">{val}</div>
+            <button onClick={() => handleV("+")} className="text-black opacity-[.25]">+</button>
           </div>
-          <button onClick={() => addToCart(data[idVal].id)} className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[10rem] h-[3rem]">
+          <button onClick={() => CartHandler(data[idVal].id,val)} className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[10rem] h-[3rem]">
             Add To Cart
           </button>
         </div>

@@ -14,7 +14,7 @@ const getDefaultCart = () => {
 
 export const CartContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
-  const [cartStatus, setCartStatus] = useState(false)
+  const [cartStatus, setCartStatus] = useState(true)
 
 
   const addToCart = (itemId) => {
@@ -25,13 +25,18 @@ export const CartContextProvider = (props) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
+  const CartHandler = (itemId, val) => {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + (val) }));
+  };
+
 
   const contextValue = {
     cartItems,
     addToCart,
     removeFromCart,
     cartStatus,
-    setCartStatus
+    setCartStatus,
+    CartHandler
   };
 
   return (
