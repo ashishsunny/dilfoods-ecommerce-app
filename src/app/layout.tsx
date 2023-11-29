@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import './globals.css'
 import Layout from '@/layout/layout'
+import { CartContextProvider } from '@/contexts/cartContext'
 
 const manrope = Manrope(
   {
@@ -21,6 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <CartContextProvider>
     <html lang="en">
       <body className={`${manrope.variable} font-sans`}>
       <Layout>
@@ -28,5 +30,6 @@ export default function RootLayout({
       </Layout>
       </body>
     </html>
+    </CartContextProvider>
   )
 }

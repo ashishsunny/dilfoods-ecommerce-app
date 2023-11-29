@@ -1,3 +1,4 @@
+'use client'
 import { createContext, useState } from "react";
 
 export const CartContext = createContext(null);
@@ -10,9 +11,11 @@ const getDefaultCart = () => {
   return cart;
 };
 
+
 export const CartContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
-  console.log(cartItems);
+  const [cartStatus, setCartStatus] = useState(false)
+
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -27,6 +30,8 @@ export const CartContextProvider = (props) => {
     cartItems,
     addToCart,
     removeFromCart,
+    cartStatus,
+    setCartStatus
   };
 
   return (

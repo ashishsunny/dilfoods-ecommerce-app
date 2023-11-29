@@ -1,22 +1,22 @@
 'use client'
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext } from 'react';
 import Navbar from '@/componets/Navbar';
 import Cart from '@/componets/Cart';
-import { CartContextProvider } from '@/contexts/cartContext';
+import { CartContext } from '@/contexts/cartContext';
 
 type LayoutProps = {
     children: ReactNode;
   };
 
+
 const Layout : React.FC<LayoutProps> = ({children}) => {
+  const { cartStatus } = useContext(CartContext );
   return (
-    <CartContextProvider>
     <div className="h-[100%] w-[100%] bg-color1">
       <Navbar/>
-      <Cart/>
+      <Cart hide={cartStatus} />
       {children}
     </div>
-    </CartContextProvider>
   )
 }
 
