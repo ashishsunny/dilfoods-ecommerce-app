@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
 import data from '@/data/data'
 import Link from 'next/link'
+const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
 interface SuccessProps {
   hide: boolean
@@ -36,7 +37,7 @@ const Success: React.FC<SuccessProps> = ({ hide }) => {
         <div className="flex justify-center items-center w-[4rem] h-[4rem] rounded-[50%] bg-amaranth">
           <img
             className="w-[1.4rem] h-[1rem]"
-            src="http://localhost:3000/assets/icons/tick.svg"
+            src={`${Url}/assets/icons/tick.svg`}
           />
         </div>
 
@@ -51,7 +52,7 @@ const Success: React.FC<SuccessProps> = ({ hide }) => {
               <div className="bg-zinc-100 flex aspect-square flex-col justify-center items-center px-3 py-2.5 rounded-lg">
                 <img
                   loading="lazy"
-                  src="http://localhost:3000/assets/products/butterbeer.jpg"
+                  src={`${Url}/assets/products/butterbeer.jpg`}
                   className="aspect-[0.88] object-contain object-center w-7 overflow-hidden"
                 />
               </div>

@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
 import data from '@/data/data'
 import Link from 'next/link'
+const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 interface CartProps {
   hide: boolean
 }
@@ -45,7 +46,7 @@ const Cart: React.FC<CartProps> = ({ hide }) => {
                   <div className="flex justify-center items-center bg-whitesmoke w-[4rem] h-[4rem]">
                     <img
                       className="w-[2.26rem] h-[2.5rem]"
-                      src="http://localhost:3000/assets/products/butterbeer.jpg"
+                      src={`${Url}/assets/products/butterbeer.jpg`}
                       alt="product img"
                     />
                   </div>

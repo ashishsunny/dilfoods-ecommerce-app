@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { textColorHandler } from '@/handlers/textColor';
 import { ProductType } from '@/interfaces/prod_type';
 import { CartContext } from '@/contexts/cartContext';
-
+const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 import Link from 'next/link';
 
 interface ProductComponentProps {
@@ -19,7 +19,7 @@ const ProductComponent: React.FC<ProductComponentProps> = ({ products }) => {
         <Link key={index} href={`/${product.id}`}>
         <div className='w-[95%] ml-[.7rem] mt-[1rem] h-[7rem] bg-gray border-[.001rem] rounded-sm border-borderRed p-4'>
             <div className='flex'>
-                <img className='w-[5rem] h-[5rem] mr-[.5rem]' src="http://localhost:3000/assets/products/butterbeer.jpg" alt="" /> 
+                <img className='w-[5rem] h-[5rem] mr-[.5rem]' src={`${Url}/assets/products/butterbeer.jpg`} alt="" /> 
                 <div>
                     <p className='text-prodText text-[1rem]'>{product.name}</p>
                     <p className='text-priceText font-bold text-[1rem]'>${product.price}G</p>
