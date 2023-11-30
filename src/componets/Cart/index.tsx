@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
 import data from '@/data/data'
 import Link from 'next/link'
-const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const Url = process.env.NEXT_PUBLIC_API_URL
 interface CartProps {
   hide: boolean
 }
