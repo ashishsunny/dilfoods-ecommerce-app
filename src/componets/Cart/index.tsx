@@ -21,7 +21,8 @@ const Cart: React.FC<CartProps> = ({ hide }) => {
 
   return (
     <div
-      className={`z-50 w-[20.5rem] h-auto pb-[3rem] top-[5rem] left-[1.5rem] ${
+      className={`z-50 w-[20.5rem] h-auto pb-[3rem] top-[5rem] left-[1.5rem] lg:top-3rem lg:left-[77%] lg:mt-2
+      ${
         hide ? 'hidden' : 'absolute'
       } right-0 bg-white`}
     >

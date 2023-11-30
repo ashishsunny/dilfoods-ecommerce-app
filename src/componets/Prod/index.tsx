@@ -24,7 +24,6 @@ const ProductComponent: React.FC<ProductComponentProps> = ({ products }) => {
                     <p className='text-prodText text-[1rem]'>{product.name}</p>
                     <p className='text-priceText font-bold text-[1rem]'>${product.price}G</p>
                     <div className='flex'><p className={`${textColorHandler(product.availability)} text-[.8rem] font-bold pr-[.5rem]`}>{product.availability}</p><p className='text-lightgray text-[.8rem] font-light'>{product.stock-cartItems[product.id]} left</p></div>
-                    
                 </div>
             </div>
         </div>

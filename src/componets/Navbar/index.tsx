@@ -6,7 +6,7 @@ import { CartContext } from '@/contexts/cartContext'
 const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
 
 const Navbar = () => {
-  const { setCartStatus } = useContext(CartContext );
+  const { setCartStatus, setSuccessStatus } = useContext(CartContext );
   const handleCart = () => {
       setCartStatus((x: boolean) => !x)
   }
@@ -20,7 +20,7 @@ const Navbar = () => {
         </div>
 
         <div>
-          <Link href="/">
+          <Link href="/" onClick={()=>setSuccessStatus(true)}>
               <img className="w-[10rem] h-[2rem]" src={`${Url}/assets/icons/logo.png`} alt="Logo"/>
           </Link>
         </div>

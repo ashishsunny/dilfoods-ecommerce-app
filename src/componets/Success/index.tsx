@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
 import data from '@/data/data'
 import Link from 'next/link'
-const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
 
 interface SuccessProps {
   hide: boolean
@@ -29,7 +29,8 @@ const Success: React.FC<SuccessProps> = ({ hide }) => {
 
   return (
     <div
-      className={`z-50 w-[20.5rem] h-[35rem] pb-[3rem] top-[14rem] left-[1.5rem] ${
+      className={`z-50 w-[20.5rem] lg:w-[40rem] h-[40rem] lg:h-[40rem] pb-[3rem] top-[14rem] left-[1.5rem] lg:top-[9rem] lg:left-[27%]
+      ${
         hide ? 'hidden' : 'absolute'
       } right-0 bg-white`}
     >
