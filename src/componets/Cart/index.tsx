@@ -47,7 +47,7 @@ const Cart: React.FC<CartProps> = ({ hide }) => {
                   <div className="flex justify-center items-center bg-whitesmoke w-[4rem] h-[4rem]">
                     <img
                       className="w-[2.26rem] h-[2.5rem]"
-                      src={`${Url}/assets/products/butterbeer.jpg`}
+                      src={`${Url}/assets/products/${item.imageUrl}.jpg`}
                       alt="product img"
                     />
                   </div>

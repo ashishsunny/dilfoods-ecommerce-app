@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
-const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const Url = process.env.NEXT_PUBLIC_API_URL
 
 const Navbar = () => {
   const { setCartStatus, setSuccessStatus } = useContext(CartContext );

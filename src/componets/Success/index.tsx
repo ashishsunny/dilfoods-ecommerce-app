@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '@/contexts/cartContext'
 import data from '@/data/data'
 import Link from 'next/link'
-const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+const Url = process.env.NEXT_PUBLIC_API_URL
 
 interface SuccessProps {
   hide: boolean
@@ -53,7 +53,7 @@ const Success: React.FC<SuccessProps> = ({ hide }) => {
               <div className="bg-zinc-100 flex aspect-square flex-col justify-center items-center px-3 py-2.5 rounded-lg">
                 <img
                   loading="lazy"
-                  src={`${Url}/assets/products/butterbeer.jpg`}
+                  src={`${Url}/assets/products/${data[firstItemId() - 1].imageUrl}.jpg`}
                   className="aspect-[0.88] object-contain object-center w-7 overflow-hidden"
                 />
               </div>

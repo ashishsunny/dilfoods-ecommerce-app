@@ -10,6 +10,11 @@ Welcome to the DilFoods E-commerce application! This project is built using Next
 - **Prettier**: An opinionated code formatter to ensure consistent code style.
 - **ESLint**: A tool for identifying and fixing problems in JavaScript code.
 
+Important Notes
+*This is a purely frontend-based application, and no backend is involved.
+*This app follows a mobile-first design approach, ensuring an optimal experience on mobile devices.
+*Feel free to explore the codebase. If you encounter any issues or have suggestions, please feel free to contact me on ashishsunny.dev
+
 ## How to Run using the dev server
 
 ### Using npm
@@ -22,9 +27,5 @@ npm run dev
 pnpm install
 pnpm run dev
 
-The development server will be running at http://localhost:3000.
+To run the development please clone the repo and change the .env url to http://localhost:3000.
 
-Important Notes
-*This is a purely frontend-based application, and no backend is involved.
-*This app follows a mobile-first design approach, ensuring an optimal experience on mobile devices.
-*Feel free to explore the codebase. If you encounter any issues or have suggestions, please feel free to contact me on ashishsunny.dev

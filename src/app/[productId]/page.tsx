@@ -5,7 +5,7 @@ import { textColorHandler } from '@/handlers/textColor'
 import data  from "@/data/data"
 import { ProductType } from '@/interfaces/prod_type'
 import { CartContext } from '@/contexts/cartContext'
-const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const Url = process.env.NEXT_PUBLIC_API_URL
 interface ProductComponentProps {
   data: ProductType[];
 }
@@ -30,7 +30,7 @@ const handleV = (x : string) =>{
         <div className="flex justify-center items-center bg-whitesmoke w-[20rem] h-[20rem]">
           <img
             className="w-[16.5rem] h-[15rem]"
-            src={`${Url}/assets/products/butterbeer.jpg`}
+            src={`${Url}/assets/products/${data[idVal].imageUrl}.jpg`}
             alt="product img"
           />
         </div>

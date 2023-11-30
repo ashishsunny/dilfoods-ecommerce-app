@@ -3,7 +3,7 @@ import React, { ChangeEvent, FormEvent, useState, useContext } from 'react'
 import data from '@/data/data'
 import Link from 'next/link'
 import { CartContext } from '@/contexts/cartContext'
-const Url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+const Url = process.env.NEXT_PUBLIC_API_URL
 interface FormData {
   name: string
   email: string
@@ -241,7 +241,7 @@ export default function Home() {
                   <div className="flex justify-center items-center bg-whitesmoke w-[4rem] h-[4rem]">
                     <img
                       className="w-[2.26rem] h-[2.5rem]"
-                      src={`${Url}/assets/products/butterbeer.jpg`}
+                      src={`${Url}/assets/products/${item.imageUrl}.jpg`}
                       alt="product img"
                     />
                   </div>
