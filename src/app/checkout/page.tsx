@@ -1,22 +1,25 @@
 'use client'
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-import data from '@/data/data';
-import Link from 'next/link';
+import React, { ChangeEvent, FormEvent, useState, useContext } from 'react'
+import data from '@/data/data'
+import Link from 'next/link'
+import { CartContext } from '@/contexts/cartContext'
 
 interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  zip: string;
-  city: string;
-  country: string;
-  paymentMethods: string[];
-  emoneyNumber: string;
-  emoneyPin: string;
+  name: string
+  email: string
+  phone: string
+  address: string
+  zip: string
+  city: string
+  country: string
+  paymentMethods: string[]
+  emoneyNumber: string
+  emoneyPin: string
 }
 
 export default function Home() {
+  const { cartItems, getTotalCartAmount, itemsVal, setSuccessStatus } =
+    useContext(CartContext)
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -28,10 +31,10 @@ export default function Home() {
     paymentMethods: [],
     emoneyNumber: '',
     emoneyPin: '',
-  });
+  })
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked } = e.target
 
     setFormData((prevData) => ({
       ...prevData,
@@ -41,14 +44,19 @@ export default function Home() {
             ? [...prevData[name], value]
             : prevData[name].filter((item) => item !== value)
           : value,
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     // Add your logic to save the data, e.g., send it to a server or store it locally
-    console.log('Form data:', formData);
-  };
+    console.log('Form data:', formData)
+  }
+
+  const handleClick = () => {
+    handleSubmit
+    setSuccessStatus(false)
+  }
 
   return (
     <div className="bg-white h-full z-0 pb-[3rem]">
@@ -218,9 +226,54 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div onClick={handleSubmit} className='flex justify-center'><button className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[17rem] h-[3rem]">
-            Continue & Pay
-        </button></div>
+      <div className="p-[1rem] pt-[2rem]">
+        <p className="pl-[1.5rem] pb-[2rem] text-[1.125rem] font-[700] uppercase leading-[.08rem]">
+          Summary
+        </p>
+        <ul className="pb-[1rem]">
+          {data.map((item, index) => {
+            if (cartItems[item.id] !== 0) {
+              return (
+                <li
+                  key={index}
+                  className="px-[1.5rem] pb-[.5rem] flex justify-between"
+                >
+                  <div className="flex justify-center items-center bg-whitesmoke w-[4rem] h-[4rem]">
+                    <img
+                      className="w-[2.26rem] h-[2.5rem]"
+                      src="http://localhost:3000/assets/products/butterbeer.jpg"
+                      alt="product img"
+                    />
+                  </div>
+
+                  <div className="flex flex-col px-[.5rem] justify-center">
+                    <p className="text-[.9rem] font-[700]">{item.name}</p>
+                    <div className="flex justify-end">
+                      <p>{item.price}</p>
+                      <p className="px-[.3rem]">x</p>
+                      <p>{cartItems[item.id]}</p>
+                    </div>
+                  </div>
+                </li>
+              )
+            }
+          })}
+        </ul>
+
+        {itemsVal() > 0 ? (
+          <div className="flex px-[1.5rem] justify-between mb-[1.5rem]">
+            <p className="opacity-[0.5] text-[.93rem] uppercase">Total</p>
+            <p className="text-[1.123rem] font-[700]">
+              {getTotalCartAmount()} G
+            </p>
+          </div>
+        ) : null}
+      </div>
+      <div onClick={() => handleClick()} className="flex justify-center">
+        <button className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[17rem] h-[3rem]">
+          Continue & Pay
+        </button>
+      </div>
     </div>
-  );
+  )
 }
