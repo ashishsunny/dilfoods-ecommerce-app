@@ -52,9 +52,6 @@ export const CartContextProvider = (props) => {
     if(cartItems[itemId]<(data[itemId-1].stock)){
       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
     }
-    else{
-      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId]}))
-    }
     console.log(cartItems)
   }
 

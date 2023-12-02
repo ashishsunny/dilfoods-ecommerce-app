@@ -33,7 +33,7 @@ const Cart: React.FC<CartProps> = ({ hide }) => {
           </p>
           <p
             onClick={RemoveAll}
-            className="text-[.93rem] underline opacity-[.5]"
+            className="text-[.93rem] underline opacity-[.5] cursor-pointer"
           >
             Remove All
           </p>

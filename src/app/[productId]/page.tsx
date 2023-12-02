@@ -12,11 +12,19 @@ interface ProductComponentProps {
 
 const ProductDetails = ({ params }: { params: { productId: string } }) => {
 const idVal = parseInt(params.productId)-1;
-const { CartHandler } = useContext(CartContext);
+const { CartHandler, cartItems } = useContext(CartContext);
 const [val, setVal] = useState(0)
+const [disabled, setDisabled] = useState(false)
 
-const handleV = (x : string) =>{
-   x ==="-" ? setVal((i)=>(i>1 ? (i - 1) : 0 )) : setVal((i)=>(i + 1))
+
+const handleP = ( stock: number, id: number) =>{
+  if((stock-((cartItems[id])+val))>0){
+    setVal((i)=>(i + 1))
+}
+}
+
+const handleM = () =>{
+    setVal((i)=>(i>1 ? (i - 1) : 0 ))
 }
 
   return (
@@ -62,11 +70,11 @@ const handleV = (x : string) =>{
 
         <div className="flex">
           <div className="bg-whitesmoke flex justify-between items-center w-[7.5rem] h-[3rem] px-[.9rem] mr-[1rem]">
-            <button onClick={() => handleV("-")} className="text-black opacity-[.25]">-</button>
+            <button onClick={() => handleM()} className="text-black opacity-[.25]">-</button>
             <div className="text-black font-[700]">{val}</div>
-            <button onClick={() => handleV("+")} className="text-black opacity-[.25]">+</button>
+            <button onClick={() => handleP(data[idVal].stock, idVal)} className="text-black opacity-[.25]">+</button>
           </div>
-          <button onClick={() => CartHandler(data[idVal].id,val)} className="uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[10rem] h-[3rem]">
+          <button onClick={() => CartHandler(data[idVal].id,val)} className={`uppercase text-white text-[.8rem] font-[800] tracking-[.06rem] bg-amaranth w-[10rem] h-[3rem]`}>
             Add To Cart
           </button>
         </div>
